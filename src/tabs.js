@@ -83,8 +83,8 @@ class TabManager {
         id: tabId,
         url: tab.view.webContents.getURL(),
         title: tab.view.webContents.getTitle(),
-        canGoBack: tab.view.webContents.canGoBack(),
-        canGoForward: tab.view.webContents.canGoForward()
+        canGoBack: tab.view.webContents.navigationHistory?.currentIndex > 0 ?? false,
+        canGoForward: tab.view.webContents.navigationHistory?.currentIndex < (tab.view.webContents.navigationHistory?.entries?.length - 1) ?? false
       });
     }
   }
@@ -149,8 +149,14 @@ class TabManager {
     if (!this.activeTabId) return;
     
     const tab = this.tabs.find(tab => tab.id === this.activeTabId);
-    if (tab && tab.view.webContents.navigationHistory?.canGoBack) {
+    if (tab && tab.view.webContents.navigationHistory?.currentIndex > 0) {
       tab.view.webContents.goBack();
+      
+      // Update navigation state after going back
+      this.mainWindow.webContents.send('navigation-state-changed', {
+        canGoBack: tab.view.webContents.navigationHistory?.currentIndex > 0 ?? false,
+        canGoForward: tab.view.webContents.navigationHistory?.currentIndex < (tab.view.webContents.navigationHistory?.entries?.length - 1) ?? false
+      });
     }
   }
 
@@ -159,8 +165,15 @@ class TabManager {
     if (!this.activeTabId) return;
     
     const tab = this.tabs.find(tab => tab.id === this.activeTabId);
-    if (tab && tab.view.webContents.navigationHistory?.canGoForward) {
+    const history = tab?.view.webContents.navigationHistory;
+    if (history && history.currentIndex < history.entries.length - 1) {
       tab.view.webContents.goForward();
+      
+      // Update navigation state after going forward
+      this.mainWindow.webContents.send('navigation-state-changed', {
+        canGoBack: history.currentIndex > 0 ?? false,
+        canGoForward: history.currentIndex < (history.entries.length - 1) ?? false
+      });
     }
   }
 
