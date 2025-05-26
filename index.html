@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electron Browser</title>
+  <link rel="stylesheet" href="https://unpkg.com/feather-icons/dist/feather.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="browser-container">
+    <!-- Tab Group Bar -->
+    <div class="tab-group-bar" id="tab-groups">
+      <div id="new-tab-group-btn" class="new-tab-group-btn">+ New Tab Group</div>
+    </div>
+
+    <!-- Tab bar (for active tab group) -->
+    <div class="tab-bar" id="tabs">
+      <div id="new-tab-btn">+</div>
+    </div>
+    
+    <!-- Navigation bar -->
+    <div class="navbar">
+      <button id="back-btn" class="nav-button" disabled>
+        <i class="feather icon-arrow-left"></i>
+      </button>
+      <button id="forward-btn" class="nav-button" disabled>
+        <i class="feather icon-arrow-right"></i>
+      </button>
+      <button id="refresh-btn" class="nav-button">
+        <i class="feather icon-refresh-cw"></i>
+      </button>
+      
+      <div class="url-container">
+        <input type="text" id="url-bar" placeholder="Enter URL or search..." autocomplete="off">
+        <div id="url-suggestions" class="url-suggestions"></div>
+      </div>
+      
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+      </div>
+      
+      <button id="add-bookmark-btn" class="action-button">
+        <i class="feather icon-star"></i>
+      </button>
+      <button id="toggle-bookmarks-btn" class="action-button">
+        <i class="feather icon-book"></i>
+      </button>
+      <button id="toggle-history-btn" class="action-button">
+        <i class="feather icon-clock"></i>
+      </button>
+      <button id="toggle-downloads-btn" class="action-button">
+        <i class="feather icon-download"></i>
+      </button>
+    </div>
+    
+    <!-- Browser content area -->
+    <div class="browser-content">
+      <div id="browser-views"></div>
+      
+      <!-- Bookmarks panel -->
+      <div id="bookmarks-panel" class="side-panel">
+        <div class="panel-header">
+          <span>Bookmarks</span>
+        </div>
+        <div id="bookmarks-container"></div>
+      </div>
+      
+      <!-- History panel -->
+      <div id="history-panel" class="side-panel">
+        <div class="panel-header">
+          <span>History</span>
+        </div>
+        <div id="history-container"></div>
+      </div>
+      
+      <!-- Downloads panel -->
+      <div id="downloads-panel" class="side-panel">
+        <div class="panel-header">
+          <span>Downloads</span>
+        </div>
+        <div id="download-container"></div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="renderer.js"></script>
+</body>
+</html>
