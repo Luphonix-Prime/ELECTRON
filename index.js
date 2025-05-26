@@ -32,7 +32,8 @@ function createWindow() {
   });
 
   // Load the index.html of the app
-  mainWindow.loadFile('index.html');
+  // mainWindow.loadFile('index.html');
+  mainWindow.loadFile(path.join(__dirname, 'our brow', 'index.html'));
 
   // Initialize the tab group manager
   tabGroupManager = new TabGroupManager(mainWindow);
