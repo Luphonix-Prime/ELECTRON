@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposable Browser - Square X Style</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="browser-window">
+        <!-- Window Controls -->
+        <div class="window-controls">
+            <div class="control-buttons">
+                <button class="control-btn minimize" aria-label="Minimize"></button>
+                <button class="control-btn maximize" aria-label="Maximize"></button>
+                <button class="control-btn close" aria-label="Close"></button>
+            </div>
+        </div>
+
+        <!-- Tab Bar -->
+        <div class="tab-bar">
+            <div class="tabs-container">
+                <!-- Tab groups will be rendered here dynamically -->
+            </div>
+            <div class="tab-controls">
+                <button class="new-tab-group-btn" aria-label="New tab group" title="Create new tab group">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 5h2v14H3zm4 0h2v14H7zm4 0h2v14h-2zm6 0v14h2V5h-2zm-2 6h-2v2h2v-2z"/>
+                    </svg>
+                </button>
+                <button class="new-tab-btn" aria-label="New tab">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="navigation-bar">
+            <div class="nav-buttons">
+                <button class="nav-btn back" disabled aria-label="Back">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.42-1.41L7.83 13H20v-2z"/>
+                    </svg>
+                </button>
+                <button class="nav-btn forward" disabled aria-label="Forward">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </button>
+                <button class="nav-btn refresh" aria-label="Refresh">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                    </svg>
+                </button>
+                <button class="nav-btn home" aria-label="Home">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Address Bar -->
+            <div class="address-bar">
+                <div class="address-input-container">
+                    <div class="security-indicator">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                        </svg>
+                    </div>
+                    <input type="text" class="address-input" placeholder="Search or enter address" value="https://www.example.com">
+                    <button class="bookmark-btn" aria-label="Bookmark">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu and Settings -->
+            <div class="menu-buttons">
+                <button class="menu-btn extensions" aria-label="Extensions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/>
+                    </svg>
+                </button>
+                <button class="menu-btn settings" aria-label="Settings">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm7-7H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-1.75 9c0 .23-.02.46-.05.68l1.48 1.16c.13.11.17.3.08.45l-1.4 2.42c-.09.15-.27.21-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.26 1.85c-.03.17-.18.3-.35.3h-2.8c-.17 0-.32-.13-.35-.29l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.74.7c-.16.06-.34 0-.43-.15l-1.4-2.42c-.09-.15-.05-.34.08-.45l1.48-1.16c-.03-.23-.05-.46-.05-.69 0-.23.02-.46.05-.68l-1.48-1.16c-.13-.11-.17-.3-.08-.45l1.4-2.42c.09-.15.27-.21.43-.15l1.74.7c.36-.28.76-.51 1.18-.69l.26-1.85c.03-.17.18-.3.35-.3h2.8c.17 0 .32.13.35.29l.26 1.85c.43.18.82.41 1.18.69l1.74-.7c.16-.06.34 0 .43.15l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.16c.03.23.05.46.05.69z"/>
+                    </svg>
+                </button>
+                <button class="menu-btn menu" aria-label="Menu">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bookmark Bar -->
+        <div class="bookmark-bar">
+            <div class="bookmarks">
+                <a href="#" class="bookmark">
+                    <div class="bookmark-favicon">📰</div>
+                    <span>News</span>
+                </a>
+                <a href="#" class="bookmark">
+                    <div class="bookmark-favicon">🎵</div>
+                    <span>Music</span>
+                </a>
+                <a href="#" class="bookmark">
+                    <div class="bookmark-favicon">📧</div>
+                    <span>Mail</span>
+                </a>
+                <a href="#" class="bookmark">
+                    <div class="bookmark-favicon">🛒</div>
+                    <span>Shopping</span>
+                </a>
+                <a href="#" class="bookmark">
+                    <div class="bookmark-favicon">📱</div>
+                    <span>Social</span>
+                </a>
+            </div>
+            <button class="bookmark-toggle" aria-label="Show/Hide bookmarks">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <div class="page-content">
+                <!-- Disposable Browser Welcome -->
+                <div class="welcome-page">
+                    <div class="disposable-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor" style="color: #3b82f6;">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <h1>Disposable Browser</h1>
+                    <p class="disposable-subtitle">Browse without traces • Auto-cleanup after 10 minutes</p>
+                    <div class="disposable-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🔄</span>
+                            <span>Tab groups auto-dispose</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">⏰</span>
+                            <span>10-minute session timer</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔒</span>
+                            <span>No browsing history saved</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🗑️</span>
+                            <span>Automatic cleanup</span>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn new-session">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                            </svg>
+                            New Session
+                        </button>
+                        <button class="quick-action-btn private-mode">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                            </svg>
+                            Private Mode
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Panel (Hidden by default) -->
+        <div class="settings-panel hidden">
+            <div class="settings-header">
+                <h2>Settings</h2>
+                <button class="close-settings" aria-label="Close settings">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="settings-content">
+                <div class="setting-group">
+                    <h3>Appearance</h3>
+                    <div class="setting-item">
+                        <label for="theme-select">Theme:</label>
+                        <select id="theme-select">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="auto">Auto</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h3>Privacy & Security</h3>
+                    <div class="setting-item">
+                        <input type="checkbox" id="block-ads" checked>
+                        <label for="block-ads">Block ads and trackers</label>
+                    </div>
+                    <div class="setting-item">
+                        <input type="checkbox" id="vpn-enabled">
+                        <label for="vpn-enabled">Enable VPN</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Preview (Hidden by default) -->
+        <div class="tab-preview hidden">
+            <div class="tab-preview-content">
+                <div class="preview-thumbnail"></div>
+                <div class="preview-title">Preview Title</div>
+                <div class="preview-url">https://example.com</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
