@@ -13,7 +13,11 @@ body, html {
   color: #333;
   overflow: hidden;
 }
-
+.ab-btn{
+  position: fixed;
+  right: 0;
+  
+}
 /* Main layout */
 .browser-container {
   display: flex;
@@ -118,7 +122,6 @@ body, html {
 
 /* Navigation buttons */
 .nav-button {
-  background: black;
   border: none;
   width: 40px;
   height: 40px;

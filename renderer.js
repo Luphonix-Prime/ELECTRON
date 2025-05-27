@@ -90,6 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Setup event listeners for browser UI
 function setupEventListeners() {
+  // Add webview navigation event listeners
+  document.addEventListener('webview-created', (e) => {
+    const webview = e.detail.webview;
+    webview.addEventListener('did-navigate', (event) => {
+      if (webview.dataset.tabId === activeTabId) {
+        updateUrlBar(event.url);
+      }
+    });
+    
+    webview.addEventListener('did-navigate-in-page', (event) => {
+      if (webview.dataset.tabId === activeTabId) {
+        updateUrlBar(event.url);
+      }
+    });
+  });
+
   // Navigation buttons
   backButton.addEventListener('click', () => {
     if (activeTabId && activeTabGroupId) {

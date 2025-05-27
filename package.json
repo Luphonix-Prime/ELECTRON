@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron . --trace-warnings ...",
+    "start": "electron . ",
+    "trace": "electron . --trace-warnings ...",
     "build": "node build-installer.js build"
   },
   "keywords": [],

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../new/new"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "ElectronBrowser",
+		"liveServer.settings.port": 5501
+	}
+}

@@ -33,7 +33,6 @@ function createWindow() {
 
   // Load the index.html of the app
   mainWindow.loadFile('index.html');
-  // mainWindow.loadFile(path.join(__dirname, 'our brow', 'index.html'));
 
   // Initialize the tab group manager
   tabGroupManager = new TabGroupManager(mainWindow);
@@ -235,20 +234,4 @@ ipcMain.on('refresh', () => {
   if (tabGroup) {
     tabGroup.tabManager.refresh();
   }
-});
-
-// Add to createWindow function
-mainWindow.webContents.on('did-navigate', (event, url) => {
-    mainWindow.webContents.send('navigation-state-update', {
-        url: url,
-        canGoBack: mainWindow.webContents.canGoBack(),
-        canGoForward: mainWindow && mainWindow.webContents ? mainWindow.webContents.canGoForward() : false
-    });
-});
-
-// Add IPC listener for navigation requests
-ipcMain.on('navigate-to', (event, url) => {
-    if (mainWindow) {
-        mainWindow.webContents.loadURL(url);
-    }
 });
