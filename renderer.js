@@ -108,26 +108,22 @@ function setupEventListeners() {
 
   // Navigation buttons
   backButton.addEventListener('click', () => {
-    if (activeTabId && activeTabGroupId) {
-      window.api.goBack();
-      
-      // Update UI immediately for responsiveness
-      const webview = document.querySelector(`webview[data-tab-id="${activeTabId}"]`);
-      if (webview && webview.canGoBack()) {
-        webview.goBack();
-      }
+    const activeTabGroup = getActiveTabGroup();
+    if (activeTabGroup?.activeTabId) {
+      ipcRenderer.send('navigate-back', {
+        tabGroupId: activeTabGroup.id,
+        tabId: activeTabGroup.activeTabId
+      });
     }
   });
   
   forwardButton.addEventListener('click', () => {
-    if (activeTabId && activeTabGroupId) {
-      window.api.goForward();
-      
-      // Update UI immediately for responsiveness
-      const webview = document.querySelector(`webview[data-tab-id="${activeTabId}"]`);
-      if (webview && webview.canGoForward()) {
-        webview.goForward();
-      }
+    const activeTabGroup = getActiveTabGroup();
+    if (activeTabGroup?.activeTabId) {
+      ipcRenderer.send('navigate-forward', {
+        tabGroupId: activeTabGroup.id,
+        tabId: activeTabGroup.activeTabId
+      });
     }
   });
   
@@ -512,13 +508,13 @@ function navigateToUrl(url) {
 
 // Update navigation buttons state
 function updateNavigationButtons() {
-  if (!activeTabId) return;
-  
   const webview = document.querySelector(`webview[data-tab-id="${activeTabId}"]`);
   if (webview) {
-    // Updated to use new navigation API
-    backButton.disabled = !webview.navigationHistory?.canGoBack;
-    forwardButton.disabled = !webview.navigationHistory?.canGoForward;
+    backButton.disabled = !webview.canGoBack();
+    forwardButton.disabled = !webview.canGoForward();
+  } else {
+    backButton.disabled = true;
+    forwardButton.disabled = true;
   }
 }
 

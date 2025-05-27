@@ -145,35 +145,18 @@ class TabManager {
   }
 
   // Navigate back in the active tab
-  goBack() {
-    if (!this.activeTabId) return;
-    
-    const tab = this.tabs.find(tab => tab.id === this.activeTabId);
-    if (tab && tab.view.webContents.navigationHistory?.currentIndex > 0) {
+  goBack(tabId) {
+    const tab = this.tabs.find(t => t.id === tabId);
+    if (tab?.view?.webContents.canGoBack()) {
       tab.view.webContents.goBack();
-      
-      // Update navigation state after going back
-      this.mainWindow.webContents.send('navigation-state-changed', {
-        canGoBack: tab.view.webContents.navigationHistory?.currentIndex > 0 ?? false,
-        canGoForward: tab.view.webContents.navigationHistory?.currentIndex < (tab.view.webContents.navigationHistory?.entries?.length - 1) ?? false
-      });
     }
   }
 
   // Navigate forward in the active tab
-  goForward() {
-    if (!this.activeTabId) return;
-    
-    const tab = this.tabs.find(tab => tab.id === this.activeTabId);
-    const history = tab?.view.webContents.navigationHistory;
-    if (history && history.currentIndex < history.entries.length - 1) {
+  goForward(tabId) {
+    const tab = this.tabs.find(t => t.id === tabId);
+    if (tab?.view?.webContents.canGoForward()) {
       tab.view.webContents.goForward();
-      
-      // Update navigation state after going forward
-      this.mainWindow.webContents.send('navigation-state-changed', {
-        canGoBack: history.currentIndex > 0 ?? false,
-        canGoForward: history.currentIndex < (history.entries.length - 1) ?? false
-      });
     }
   }
 

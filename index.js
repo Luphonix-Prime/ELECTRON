@@ -210,20 +210,17 @@ ipcMain.on('navigate-to', (event, url) => {
 });
 
 // Go back in browser history
-ipcMain.on('go-back', () => {
-  if (!tabGroupManager) return;
-  const tabGroup = tabGroupManager.getTabGroupById(tabGroupManager.activeTabGroupId);
+ipcMain.on('navigate-back', (event, { tabGroupId, tabId }) => {
+  const tabGroup = tabGroupManager.tabGroups.find(g => g.id === tabGroupId);
   if (tabGroup) {
-    tabGroup.tabManager.goBack();
+    tabGroup.tabManager.goBack(tabId);
   }
 });
 
-// Go forward in browser history
-ipcMain.on('go-forward', () => {
-  if (!tabGroupManager) return;
-  const tabGroup = tabGroupManager.getTabGroupById(tabGroupManager.activeTabGroupId);
+ipcMain.on('navigate-forward', (event, { tabGroupId, tabId }) => {
+  const tabGroup = tabGroupManager.tabGroups.find(g => g.id === tabGroupId);
   if (tabGroup) {
-    tabGroup.tabManager.goForward();
+    tabGroup.tabManager.goForward(tabId);
   }
 });
 
