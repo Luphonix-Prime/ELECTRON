@@ -35,7 +35,7 @@ class TabGroupManager {
     const tabManager = new TabManager(this.mainWindow, tabGroupSession);
     
     // Create the initial tab for this group
-    const initialTabId = tabManager.createTab('https://www.google.com');
+    const initialTabId = tabManager.createTab('https://www.bing.com');
     
     // Add to tab groups array
     this.tabGroups.push({

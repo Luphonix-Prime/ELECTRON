@@ -9,7 +9,7 @@ class TabManager {
   }
 
   // Create a new tab with a browser view
-  createTab(url = 'https://www.google.com') {
+  createTab(url = 'https://www.bing.com') {
     const tabId = Date.now().toString();
     
     // Create browser view preferences

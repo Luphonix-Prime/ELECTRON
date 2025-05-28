@@ -214,7 +214,7 @@ function setupEventListeners() {
   // New tab button
   newTabButton.addEventListener('click', () => {
     if (activeTabGroupId) {
-      window.api.createTab('https://www.google.com');
+      window.api.createTab('https://www.bing.com');
     } else {
       // If no tab group exists, first create one
       window.api.createTabGroup();
@@ -246,7 +246,7 @@ function setupEventListeners() {
     if (e.key === 'Enter') {
       const searchTerm = searchInput.value.trim();
       if (searchTerm) {
-        navigateToUrl(`https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`);
+        navigateToUrl(`https://www.bing.com/search?q=${encodeURIComponent(searchTerm)}`);
       }
     }
   });
@@ -283,7 +283,7 @@ function setupEventListeners() {
 }
 
 // Create a new browser tab (delegated to main process)
-function createTab(url = 'https://www.google.com') {
+function createTab(url = 'https://www.bing.com') {
   if (!activeTabGroupId) {
     // If no active tab group, create one first
     window.api.createTabGroup();
@@ -486,7 +486,7 @@ function navigateToUrl(url) {
     }
     // Treat as a search query
     else {
-      url = `https://www.google.com/search?q=${encodeURIComponent(url)}`;
+      url = `https://www.bing.com/search?q=${encodeURIComponent(url)}`;
     }
   }
   
@@ -845,7 +845,7 @@ function addTabToUI(tab) {
   const webview = document.createElement('webview');
   webview.className = 'browser-view';
   webview.setAttribute('data-tab-id', tab.id);
-  webview.setAttribute('src', tab.url || 'https://www.google.com');
+  webview.setAttribute('src', tab.url || 'https://www.bing.com/');
   webview.setAttribute('allowpopups', 'true');
   webview.style.zIndex = '10'; // Ensure proper z-index to prevent overlapping with UI elements
   
