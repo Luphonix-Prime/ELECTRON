@@ -1,9 +1,0 @@
-modules = ["nodejs-20"]
-
-[nix]
-channel = "stable-24_05"
-
-[workflows]
-
-[deployment]
-run = ["sh", "-c", "npm install electron electron-dl && npx electron ."]
