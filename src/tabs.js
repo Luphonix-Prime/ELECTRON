@@ -145,17 +145,18 @@ class TabManager {
   }
 
   // Navigate back in the active tab
-  goBack(tabId) {
+  goBack() {
+    const tabId = this.getActiveTabId();
     const tab = this.tabs.find(t => t.id === tabId);
-    if (tab?.view?.webContents.canGoBack()) {
-      tab.view.webContents.goBack();
+    if (win.webContents.navigationHistory.canGoBack()) {
+      win.webContents.goBack();
     }
   }
 
-  // Navigate forward in the active tab
-  goForward(tabId) {
+  goForward() {
+    const tabId = this.getActiveTabId();
     const tab = this.tabs.find(t => t.id === tabId);
-    if (tab?.view?.webContents.canGoForward()) {
+    if (tab?.view?.webContents.navigationHistory.canGoForward()) {
       tab.view.webContents.goForward();
     }
   }

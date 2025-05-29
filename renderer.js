@@ -847,7 +847,7 @@ function addTabToUI(tab) {
   webview.setAttribute('data-tab-id', tab.id);
   webview.setAttribute('src', tab.url || 'https://www.google.com');
   webview.setAttribute('allowpopups', 'true');
-  webview.style.zIndex = '10'; // Ensure proper z-index to prevent overlapping with UI elements
+  webview.style.zIndex = '-25'; // Ensure proper z-index to prevent overlapping with UI elements
   
   // Add tab to tabs container
   tabsContainer.insertBefore(tabElement, newTabButton);
